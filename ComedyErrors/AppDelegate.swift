@@ -16,6 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        let goldColor = UIColor(red: 218.0 / 255.0, green: 165.0 / 255.0, blue: 32.0 / 255.0, alpha: 1.0)
+        let barButtonAttributes = [
+            NSForegroundColorAttributeName : goldColor
+        ]
+        UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self]).setTitleTextAttributes(barButtonAttributes, forState: .Normal)
+        let disabledGoldColor = UIColor(red: 218.0 / 255.0, green: 165.0 / 255.0, blue: 32.0 / 255.0, alpha: 0.2)
+        let disabledBarButtonAttributes = [
+            NSForegroundColorAttributeName : disabledGoldColor
+        ]
+        UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self]).setTitleTextAttributes(disabledBarButtonAttributes, forState: .Disabled)
+        UIBarButtonItem.appearance().tintColor = goldColor
+        
+        UINavigationBar.appearance().barTintColor = UIColor(red: 159.0 / 255.0, green: 0.0, blue: 1.0, alpha: 1.0)
+        let navigationBarAttributes = [
+            NSForegroundColorAttributeName : UIColor.whiteColor()
+        ]
+        UINavigationBar.appearance().titleTextAttributes = navigationBarAttributes
         return true
     }
 
