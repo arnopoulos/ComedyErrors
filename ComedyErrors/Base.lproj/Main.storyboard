@@ -116,7 +116,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yjv-dj-3jd" customClass="CEThumbnail" customModule="ComedyErrors" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="414" height="221"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="John" translatesAutoresizingMaskIntoConstraints="NO" id="miF-Rd-01D">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="John" translatesAutoresizingMaskIntoConstraints="NO" id="miF-Rd-01D">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhh-Em-Yjt">
@@ -128,8 +128,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="miF-Rd-01D" firstAttribute="width" secondItem="Yjv-dj-3jd" secondAttribute="width" id="2nJ-Oi-hWm"/>
+                                    <constraint firstItem="miF-Rd-01D" firstAttribute="centerY" secondItem="Yjv-dj-3jd" secondAttribute="centerY" id="9AI-DQ-Kh6"/>
+                                    <constraint firstItem="miF-Rd-01D" firstAttribute="height" secondItem="Yjv-dj-3jd" secondAttribute="height" id="CAl-6J-ReC"/>
                                     <constraint firstAttribute="trailing" secondItem="Mhh-Em-Yjt" secondAttribute="trailing" constant="8" id="CDa-bx-NMQ"/>
                                     <constraint firstAttribute="width" secondItem="Yjv-dj-3jd" secondAttribute="height" multiplier="15:8" id="KPc-D2-PPu"/>
+                                    <constraint firstItem="miF-Rd-01D" firstAttribute="centerX" secondItem="Yjv-dj-3jd" secondAttribute="centerX" id="XBN-kY-SOx"/>
                                     <constraint firstItem="Mhh-Em-Yjt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Yjv-dj-3jd" secondAttribute="top" constant="8" id="aMf-j6-Kau"/>
                                     <constraint firstAttribute="bottom" secondItem="Mhh-Em-Yjt" secondAttribute="bottom" constant="8" id="izC-Mg-mNQ"/>
                                     <constraint firstItem="Mhh-Em-Yjt" firstAttribute="leading" secondItem="Yjv-dj-3jd" secondAttribute="leading" constant="8" id="m4x-yZ-BR1"/>
@@ -212,6 +216,7 @@
                         <outlet property="nextButton" destination="aoc-YN-gKQ" id="wRY-Um-GD9"/>
                         <outlet property="tableView" destination="Yas-xc-lqQ" id="cFe-1n-LQ7"/>
                         <outlet property="thumbnail" destination="Yjv-dj-3jd" id="HqE-kO-WG3"/>
+                        <outlet property="thumbnailAspectRatio" destination="KPc-D2-PPu" id="Nii-u3-wAR"/>
                         <segue destination="gIF-s6-z6P" kind="show" identifier="ResultSegue" id="H03-oR-bXa"/>
                     </connections>
                 </viewController>
@@ -375,8 +380,8 @@
                                 <exclude reference="j7A-sb-vXF"/>
                                 <exclude reference="4De-2K-BYw"/>
                                 <exclude reference="GRU-sc-5x1"/>
-                                <exclude reference="iLc-mh-hnN"/>
                                 <exclude reference="f3c-du-nFX"/>
+                                <exclude reference="iLc-mh-hnN"/>
                             </mask>
                         </variation>
                     </view>

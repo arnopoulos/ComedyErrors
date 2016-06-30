@@ -15,6 +15,17 @@ class QuestionViewController: UIViewController {
     
     @IBOutlet private var nextButton: UIBarButtonItem?
     
+    @IBOutlet private var thumbnailAspectRatio: NSLayoutConstraint? {
+        didSet {
+            if let oldValue = oldValue {
+                self.thumbnail?.removeConstraint(oldValue)
+            }
+            if let thumbnailAspectRatio = thumbnailAspectRatio {
+                self.thumbnail?.addConstraint(thumbnailAspectRatio)
+            }
+        }
+    }
+    
     private var index: Int? = nil
     
     private var question: CEQuestion? {
@@ -24,8 +35,15 @@ class QuestionViewController: UIViewController {
     }
     
     private func setupView() {
+        let image = UIImage(data: self.question?.imageData ?? NSData())
+        
         self.thumbnail?.label?.text = self.question?.question
-        self.thumbnail?.imageView?.image = UIImage(data: self.question?.imageData ?? NSData())
+        self.thumbnail?.imageView?.image = image
+        if let size = image?.size {
+            let aspectRatio = size.width / size.height
+            self.thumbnailAspectRatio = self.thumbnailAspectRatio?.createConstraint(aspectRatio)
+        }
+        
         self.title = "Question \(QuestionServer.sharedInstance.count)"
     }
 
@@ -90,5 +108,17 @@ extension QuestionViewController: UITableViewDelegate {
         self.question?.selectedAnswer = self.question?.answers[indexPath.row]
         self.index = indexPath.row
         self.nextButton?.enabled = true
+    }
+}
+
+private extension NSLayoutConstraint {
+    func createConstraint(multiplier: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: self.firstItem,
+                                  attribute: self.firstAttribute,
+                                  relatedBy: self.relation,
+                                  toItem: self.secondItem,
+                                  attribute: self.secondAttribute,
+                                  multiplier: multiplier,
+                                  constant: self.constant)
     }
 }
